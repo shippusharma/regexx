@@ -1,0 +1,47 @@
+{
+	"name": "regexx",
+	"description": "regexx, a versatile and efficient regex library designed to streamline pattern matching and text manipulation tasks in your programming projects. This comprehensive library provides developers with a rich set of pre-built regular expressions for common use cases, including email and URL validation, password strength checks, and more.",
+	"version": "1.0.1",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"keywords": [
+		"regex",
+		"regex-js",
+		"regular",
+		"expression",
+		"regular-expression",
+		"regex-pattern",
+		"javascript",
+		"typescript",
+		"node",
+		"regexx"
+	],
+	"author": "Shippu Sharma <shippusharma00@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/shippusharma/regexx.git"
+	},
+	"homepage": "https://github.com/shippusharma/regexx#readme",
+	"bugs": {
+		"url": "https://github.com/shippusharma/regexx/issues"
+	},
+	"license": "MIT",
+	"scripts": {
+		"dev": "nodemon --exec ts-node src/index.ts",
+		"build": "npm run clean && tsc",
+		"start": "node lib/index.js",
+		"clean": "rm -rf lib tsconfig.tsbuildinfo",
+		"prepare": "npm run build"
+	},
+	"devDependencies": {
+		"nodemon": "^3.0.2",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.3.3"
+	},
+	"files": [
+		"lib/**/*"
+	]
+}
