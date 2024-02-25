@@ -208,7 +208,9 @@ console.log(isValidUsername); // Output: true
 ```js
 import { validateUserName } from 'regexx';
 
-const isValidUserName = validateUserName('user_123',{ min = 6, max = 32 });
+const isValidUserName = validateUserName('user_123');
+or;
+const isValidUserName = validateUserName('user_123', 6, 32);
 console.log(isValidUserName); // Output: true
 ```
 
@@ -401,8 +403,52 @@ const isValidDomainName = validateDomainName('example.com');
 console.log(isValidDomainName); // Output: true
 ```
 
+### Value is Empty or not Validation
+
+```js
+import { validateIsEmpty } from 'regexx';
+
+const isEmpty = validateIsEmpty(null);
+console.log(isEmpty); // Output: true
+```
+
+### String have Whitespace or not Validation
+
+```js
+import { validateEmptyString } from 'regexx';
+
+const emptyString = validateEmptyString('');
+console.log(emptyString); // Output: true
+```
+
+---
+
+<br>
+
+## 🔗 GitHub
+
+[`🔗 regexx`](https://github.com/Shippusharma/nodejs-architecture-typescript.git)
+
+---
+
 <br>
 
 # ☯ License
 
 > ## MIT License
+>
+> ## `Copyright` ©️ `2024`
+
+---
+
+<br>
+
+# 🔰 Contribution
+
+> **_thank you for your contribution._**
+
+> # 🎉 `Shippu Sharma` 🎉
+>
+> [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/shippu-sharma-4a50b91a2) [![Github](https://img.shields.io/badge/Github-%23404d59.svg?logo=github&logoColor=#D04A37)](https://github.com/shippusharma) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/s_i_b_u__s_h_a_r_m_a)
+
+---

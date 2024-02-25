@@ -28,7 +28,8 @@ export function validateEmail(email: string): boolean {
  * @see {@link https://github.com/shippusharma ***Github***}
  */
 export function validatePassword(password: string): boolean {
-	const PASSWORD_REGEX = /^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{8,}$/;
+	const PASSWORD_REGEX =
+		/^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[=?{/~}!@#$%^&*()\-__+.]){1,}).{8,}$/;
 	return PASSWORD_REGEX.test(password);
 }
 
@@ -120,7 +121,7 @@ export function validateIndianPhoneNumber(phoneNumber: string): boolean {
  * @shippusharma `author`
  * @see {@link https://github.com/shippusharma ***Github***}
  */
-export function validatePhoneNumber(phoneNumber: string, phoneRegex = /^\d{10}$/): boolean {
+export function validatePhoneNumber(phoneNumber: string, phoneRegex: RegExp = /^\d{10}$/): boolean {
 	return phoneRegex.test(phoneNumber);
 }
 
@@ -164,7 +165,7 @@ export function validateUsPhoneNumber(phoneNumber: string): boolean {
  * @see {@link https://github.com/shippusharma ***Github***}
  */
 export function validatePasswordStrength(password: string): string {
-	const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{12,}$/; // Password must be at least 12 characters long and contain a lowercase letter, an uppercase letter, a digit, and a special character
+	const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[=?{/~}!@#$%^&*()\-__+.]).{12,}$/; // Password must be at least 12 characters long and contain a lowercase letter, an uppercase letter, a digit, and a special character
 	const poorRegex = /^(?=.*[a-z])(?=.*\d).{8,}$/; // Password must be at least 8 characters long and contain a lowercase letter and a digit
 	const weakRegex = /^(?=.*[a-z]).{6,}$/; // Password must be at least 6 characters long and contain a lowercase letter
 
@@ -249,7 +250,8 @@ function requied(val: string): boolean {
  * @shippusharma `author`
  * @see {@link https://github.com/shippusharma ***Github***}
  */
-export function validateUserName(val: string, { min = 6, max = 32 }: { min: number; max: number }): boolean {
+
+export function validateUserName(val: string, min: number = 6, max: number = 32): boolean {
 	const regex = new RegExp(`^(?=.{${min},${max}}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$`);
 	return !!(requied(val) && regex.test(val));
 }
@@ -569,4 +571,29 @@ export function validateMarkdownImageURL(url: string): boolean {
 export function validateDomainName(domainName: string): boolean {
 	const domainNameRegex = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 	return domainNameRegex.test(domainName);
+}
+
+/**
+ * @description empty string Validation
+ * @param str
+ * @returns {boolean} true | false
+ *
+ * @shippusharma `author`
+ * @see {@link https://github.com/shippusharma ***Github***}
+ */
+export function validateEmptyString(str: string): boolean {
+	const _regex = /^\s*$/;
+	return _regex.test(str);
+}
+
+/**
+ * @description empty or not Validation
+ * @param value
+ * @returns {boolean} true | false
+ *
+ * @shippusharma `author`
+ * @see {@link https://github.com/shippusharma ***Github***}
+ */
+export function validateIsEmpty(value: null | undefined | string | number): boolean {
+	return [null, NaN, '', undefined].includes(value);
 }

@@ -1,9 +1,12 @@
 {
 	"name": "regexx",
 	"description": "regexx, a versatile and efficient regex library designed to streamline pattern matching and text manipulation tasks in your programming projects. This comprehensive library provides developers with a rich set of pre-built regular expressions for common use cases, including email and URL validation, password strength checks, and more.",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
+	"files": [
+		"lib/**/*"
+	],
 	"engines": {
 		"node": ">=16.0.0"
 	},
@@ -40,8 +43,5 @@
 		"nodemon": "^3.0.2",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.3.3"
-	},
-	"files": [
-		"lib/**/*"
-	]
+	}
 }
