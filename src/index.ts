@@ -74,6 +74,22 @@ export function validateIp6Address(ip6Address: string): boolean {
 }
 
 /**
+ * @description Validate either an IPv4 or IPv6 address
+ * @param address
+ * @returns {boolean} true | false
+ *
+ * @shippusharma `author`
+ * @see {@link https://github.com/shippusharma ***Github***}
+ */
+export function validateIP(address: string): boolean {
+    const ipv4Regex =
+        /^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.((25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.){2}(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$/;
+    const ipv6Regex = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
+
+    return ipv4Regex.test(address) || ipv6Regex.test(address);
+}
+
+/**
  * @description date of birth validation
  * @param dob
  * @returns {boolean} true | false
@@ -169,15 +185,10 @@ export function validatePasswordStrength(password: string): string {
 	const poorRegex = /^(?=.*[a-z])(?=.*\d).{8,}$/; // Password must be at least 8 characters long and contain a lowercase letter and a digit
 	const weakRegex = /^(?=.*[a-z]).{6,}$/; // Password must be at least 6 characters long and contain a lowercase letter
 
-	if (strongRegex.test(password)) {
-		return 'password is strong';
-	} else if (poorRegex.test(password)) {
-		return 'password is poor';
-	} else if (weakRegex.test(password)) {
-		return 'password is weak';
-	} else {
-		return 'password is invalid';
-	}
+	if (strongRegex.test(password)) return 'password is strong';
+	if (poorRegex.test(password)) return 'password is poor';
+	if (weakRegex.test(password)) return 'password is weak';
+	return 'password is invalid';
 }
 
 /**
@@ -227,6 +238,19 @@ export function validateUserNameStrength(
 	if (strength === 'dash-dot') return alphanumericDashDotRegex.test(username);
 	if (strength === 'min-length') return minLengthRegex.test(username);
 	return basicRegex.test(username);
+}
+
+/**
+ * @description Name validation (Only letters allowed, no numbers or special characters)
+ * @param name
+ * @returns {boolean} true | false
+ *
+ * @shippusharma `author`
+ * @see {@link https://github.com/shippusharma ***Github***}
+ */
+export function validateOnlyStringName(name: string): boolean {
+    const NAME_REGEX = /^[a-zA-Z\s]+$/; // Only letters and spaces
+    return NAME_REGEX.test(name);
 }
 
 /**
@@ -423,9 +447,10 @@ export function validateTime(time: string, type: 'hhmm' | 'hhmmss' = 'hhmmss'): 
  * @see {@link https://github.com/shippusharma ***Github***}
  */
 export function validateStrongPasswordMinLength(password: string, minLength: number = 8): boolean {
-	const strongRegex = new RegExp(`^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=\W+)[a-zA-Z0-9\W]{${minLength},}$`);
-	return strongRegex.test(password);
+  const strongRegex = new RegExp(`^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*\\W)[a-zA-Z0-9\\W]{${minLength},}$`);
+  return strongRegex.test(password);
 }
+
 
 /**
  * @param filename
@@ -596,4 +621,51 @@ export function validateEmptyString(str: string): boolean {
  */
 export function validateIsEmpty(value: null | undefined | string | number): boolean {
 	return [null, NaN, '', undefined].includes(value);
+}
+
+
+/**
+ * @description MAC Address validation
+ * @param macAddress
+ * @returns {boolean} true | false
+ *
+ * @shippusharma `author`
+ * @see {@link https://github.com/shippusharma ***Github***}
+ */
+export function validateMACAddress(macAddress: string): boolean {
+    const MAC_ADDRESS_REGEX = /^([0-9a-fA-F]{2}[:.-]?){5}[0-9a-fA-F]{2}$/;
+    return MAC_ADDRESS_REGEX.test(macAddress);
+}
+
+/**
+ * @description Currency (USD) format validation
+ * @param amount
+ * @returns {boolean} true | false
+ *
+ * @shippusharma `author`
+ * @see {@link https://github.com/shippusharma ***Github***}
+ */
+export function validateCurrency(amount: string): boolean {
+    const CURRENCY_REGEX = /^\$?(\d{1,3})(,(\d{3}))*(\.\d{2})?$/;
+    return CURRENCY_REGEX.test(amount);
+}
+
+
+// U.S. ZIP code validation
+export function validateUSZipCode(zipCode: string): boolean {
+    const ZIP_CODE_REGEX = /^\d{5}(?:-\d{4})?$/;
+    return ZIP_CODE_REGEX.test(zipCode);
+}
+
+/**
+ * @description HTML Tag validation
+ * @param htmlTag
+ * @returns {boolean} true | false
+ *
+ * @shippusharma `author`
+ * @see {@link https://github.com/shippusharma ***Github***}
+ */
+export function validateHTMLTag(htmlTag: string): boolean {
+    const HTML_TAG_REGEX = /^<\/?[a-zA-Z][\w-]*\s*[^>]*>/;
+    return HTML_TAG_REGEX.test(htmlTag);
 }

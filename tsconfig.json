@@ -1,9 +1,11 @@
 {
 	"compilerOptions": {
-		"target": "ES5",
+		"target": "ES6",
 		"module": "CommonJS",
 		"moduleResolution": "Node10",
 		"lib": ["ESNext"],
+		"types": ["jest", "node"],
+    	"typeRoots": ["node_modules/@types"],
 		"rootDir": "src",
 		"outDir": "lib",
 		"pretty": true,
@@ -29,16 +31,17 @@
 		"skipLibCheck": true,
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
-		"baseUrl": ".",
+		"baseUrl": "./",
 		"paths": {
 			"@/*": ["./src/*", "./lib/*"]
 		}
 	},
-	"include": ["./src/**/*", "tsconfig-paths-register.d.ts"],
+	"include": ["tests/**/*", "./src/**/*", "tsconfig-paths-register.d.ts"],
 	"exclude": [
 		"node_modules",
 		"**/*.spec.ts",
 		"**/*.test.ts",
+		"**/*.test.js",
 		"tsconfig.tsbuildinfo",
 		"build",
 		"dist",

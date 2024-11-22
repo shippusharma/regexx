@@ -4,6 +4,7 @@ declare module 'regexx' {
 	export function validateURL(url: string): boolean;
 	export function validateIPv4Address(ip4Address: string): boolean;
 	export function validateIp6Address(ip6Address: string): boolean;
+	export function validateIP(address: string): boolean;
 	export function validateDob(dob: string): boolean;
 	export function validateMongodbId(_id: string): boolean;
 	export function validateIndianPhoneNumber(phoneNumber: string): boolean;
@@ -19,6 +20,7 @@ declare module 'regexx' {
 	export function validateDecimalNumberic(val: string): boolean;
 	export function validateAddress(val: string): boolean;
 	export function validateUserNameStrength(username: string, strength?: 'basic' | 'min-length' | 'dash-dot'): boolean;
+	export function validateOnlyStringName(name: string): boolean;
 
 	function requied(val: string): boolean;
 	export function validateUserName(val: string, min?: number, max?: number): boolean;
@@ -46,4 +48,9 @@ declare module 'regexx' {
 	export function validateDomainName(domainName: string): boolean;
 	export function validateEmptyString(str: string): boolean;
 	export function validateIsEmpty(value: null | undefined | string | number): boolean;
+
+	export function validateMACAddress(macAddress: string): boolean;
+	export function validateCurrency(amount: string): boolean;
+	export function validateUSZipCode(zipCode: string): boolean;
+	export function validateHTMLTag(htmlTag: string): boolean;
 }
